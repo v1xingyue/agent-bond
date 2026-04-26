@@ -19,7 +19,7 @@ export function WalletButton() {
         </div>
         <button
           onClick={disconnect}
-          className="w-7 h-7 rounded-lg hover:bg-white/5 flex items-center justify-center text-text-muted hover:text-status-error transition-colors cursor-pointer"
+          className="w-7 h-7 rounded-lg hover:bg-subtle flex items-center justify-center text-text-muted hover:text-status-error transition-colors cursor-pointer"
           title="断开连接"
         >
           <LogOut className="w-3.5 h-3.5" />
@@ -43,7 +43,7 @@ export function WalletButton() {
           className="fixed inset-0 flex items-start justify-center"
           style={{
             zIndex: 100,
-            backgroundColor: 'rgba(0,0,0,0.7)',
+            backgroundColor: 'var(--overlay-bg)',
             backdropFilter: 'blur(10px)',
             WebkitBackdropFilter: 'blur(10px)',
             paddingTop: '100px',
@@ -59,7 +59,7 @@ export function WalletButton() {
           >
             <button
               onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 w-8 h-8 rounded-lg hover:bg-white/5 flex items-center justify-center text-text-muted hover:text-text-primary transition-colors cursor-pointer"
+              className="absolute top-4 right-4 w-8 h-8 rounded-lg hover:bg-subtle flex items-center justify-center text-text-muted hover:text-text-primary transition-colors cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
@@ -70,7 +70,7 @@ export function WalletButton() {
             <div className="space-y-2">
               <button
                 onClick={connect}
-                className="w-full flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-border-default hover:border-border-hover hover:bg-white/[0.05] transition-all cursor-pointer"
+                className="w-full flex items-center gap-3 p-3 rounded-xl bg-subtle-faint border border-border-default hover:border-border-hover hover:bg-subtle transition-all cursor-pointer"
               >
                 <div className="w-9 h-9 rounded-lg bg-purple-500/10 flex items-center justify-center">
                   <svg className="w-5 h-5 text-purple-400" viewBox="0 0 24 24" fill="currentColor">
@@ -85,7 +85,7 @@ export function WalletButton() {
                 </div>
               </button>
 
-              <div className="w-full flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-border-default/50 opacity-40 cursor-not-allowed">
+              <div className="w-full flex items-center gap-3 p-3 rounded-xl bg-subtle-faint border border-border-default/50 opacity-40 cursor-not-allowed">
                 <div className="w-9 h-9 rounded-lg bg-orange-500/10 flex items-center justify-center">
                   <svg className="w-5 h-5 text-orange-400" viewBox="0 0 24 24" fill="currentColor">
                     <circle cx="12" cy="12" r="10"/>
@@ -97,7 +97,7 @@ export function WalletButton() {
                 </div>
               </div>
 
-              <div className="w-full flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-border-default/50 opacity-40 cursor-not-allowed">
+              <div className="w-full flex items-center gap-3 p-3 rounded-xl bg-subtle-faint border border-border-default/50 opacity-40 cursor-not-allowed">
                 <div className="w-9 h-9 rounded-lg bg-blue-500/10 flex items-center justify-center">
                   <svg className="w-5 h-5 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
                     <rect x="4" y="4" width="16" height="16" rx="4"/>

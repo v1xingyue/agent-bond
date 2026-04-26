@@ -45,7 +45,7 @@ function GradientText({ children, className = '' }: { children: React.ReactNode;
 
 function GlassCard({ children, className = '', glow = false }: { children: React.ReactNode; className?: string; glow?: boolean }) {
   return (
-    <div className={`relative rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl overflow-hidden ${glow ? 'glow-purple' : ''} ${className}`}>
+    <div className={`relative rounded-2xl border border-subtle bg-subtle-faint backdrop-blur-xl overflow-hidden ${glow ? 'glow-purple' : ''} ${className}`}>
       {children}
     </div>
   );
@@ -139,7 +139,7 @@ export default function LandingPage() {
             进入 Demo
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
-          <a href="#problem" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/10 text-text-primary font-semibold hover:bg-white/5 transition-colors">
+          <a href="#problem" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-subtle text-text-primary font-semibold hover:bg-subtle transition-colors">
             了解机制
           </a>
         </motion.div>
@@ -203,7 +203,7 @@ export default function LandingPage() {
             </div>
 
             {/* Row 1 */}
-            <div className="grid grid-cols-4 gap-0 border-t border-white/5">
+            <div className="grid grid-cols-4 gap-0 border-t border-subtle-faint">
               <div className="p-4 flex items-center text-sm font-medium text-text-muted">授权维度</div>
               <div className="p-4 text-center text-sm text-text-secondary">静态、一次性授权</div>
               <div className="p-4 text-center text-sm text-text-secondary">模糊、不可量化</div>
@@ -211,7 +211,7 @@ export default function LandingPage() {
             </div>
 
             {/* Row 2 */}
-            <div className="grid grid-cols-4 gap-0 border-t border-white/5">
+            <div className="grid grid-cols-4 gap-0 border-t border-subtle-faint">
               <div className="p-4 flex items-center text-sm font-medium text-text-muted">防篡改性</div>
               <div className="p-4 text-center text-sm text-text-secondary">极易泄露与滥用</div>
               <div className="p-4 text-center text-sm text-text-secondary">存在幻觉与操纵风险</div>
@@ -219,7 +219,7 @@ export default function LandingPage() {
             </div>
 
             {/* Row 3 */}
-            <div className="grid grid-cols-4 gap-0 border-t border-white/5">
+            <div className="grid grid-cols-4 gap-0 border-t border-subtle-faint">
               <div className="p-4 flex items-center text-sm font-medium text-text-muted">实时意愿</div>
               <div className="p-4 text-center text-sm text-text-secondary">无法反映状态变更</div>
               <div className="p-4 text-center text-sm text-text-secondary">缺乏硬性执行准则</div>
@@ -245,7 +245,7 @@ export default function LandingPage() {
             { icon: KeyRound, title: '绝对代表权', desc: 'Absolute Proxy', color: '#14F195', bg: 'bg-solana-green/10' },
           ].map((item, i) => (
             <motion.div key={item.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-              <GlassCard className="p-6 h-full text-center group hover:border-white/20 transition-all">
+              <GlassCard className="p-6 h-full text-center group hover:border-subtle transition-all">
                 <div className={`w-14 h-14 mx-auto rounded-2xl ${item.bg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                   <item.icon className="w-6 h-6" style={{ color: item.color }} />
                 </div>
@@ -304,7 +304,7 @@ export default function LandingPage() {
             },
           ].map((item, i) => (
             <motion.div key={item.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }}>
-              <GlassCard className="p-8 h-full text-center group hover:border-white/20 transition-all">
+              <GlassCard className="p-8 h-full text-center group hover:border-subtle transition-all">
                 <div className="w-16 h-16 mx-auto rounded-2xl flex items-center justify-center mb-6" style={{ backgroundColor: `${item.color}15` }}>
                   <item.icon className="w-7 h-7" style={{ color: item.color }} />
                 </div>
@@ -344,7 +344,7 @@ export default function LandingPage() {
     cumulative_amount: u64,
 }`}
               </pre>
-              <div className="mt-4 pt-4 border-t border-white/5 text-xs text-text-muted">
+              <div className="mt-4 pt-4 border-t border-subtle-faint text-xs text-text-muted">
                 PDA 不是静态存储，而是一个动态的、由高频微支付驱动的"信任蓄水池"。
               </div>
             </GlassCard>
@@ -412,13 +412,13 @@ export default function LandingPage() {
             <div className="grid md:grid-cols-3 gap-6">
               {phases.map((phase, i) => (
                 <motion.div key={phase.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }}>
-                  <GlassCard className="p-6 h-full group hover:border-white/20 transition-all">
+                  <GlassCard className="p-6 h-full group hover:border-subtle transition-all">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-3 h-3 rounded-full" style={{ backgroundColor: phase.color }} />
                       <span className="text-sm font-semibold" style={{ color: phase.color }}>阶段 {['一', '二', '三'][i]}：{phase.name}</span>
                     </div>
                     <p className="text-sm text-text-secondary leading-relaxed">{phase.desc}</p>
-                    <div className="mt-4 h-1 rounded-full bg-white/5 overflow-hidden">
+                    <div className="mt-4 h-1 rounded-full bg-subtle overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: phase.width }}
@@ -471,7 +471,7 @@ export default function LandingPage() {
 
   /* ─── Stats Bar ─────────────────────────────────────────── */
   const Stats = () => (
-    <section className="relative py-12 px-6 border-y border-white/5">
+    <section className="relative py-12 px-6 border-y border-subtle-faint">
       <div className="max-w-4xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
@@ -494,7 +494,7 @@ export default function LandingPage() {
 
   /* ─── Footer ─────────────────────────────────────────────── */
   const Footer = () => (
-    <footer className="relative py-12 px-6 border-t border-white/5">
+    <footer className="relative py-12 px-6 border-t border-subtle-faint">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="w-2 h-2 rounded-full bg-solana-green animate-pulse" />
@@ -520,7 +520,7 @@ export default function LandingPage() {
       <Particles />
 
       {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 border-b border-white/5 bg-bg-secondary/80 backdrop-blur-xl">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 border-b border-subtle-faint bg-bg-secondary/80 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-solana-green animate-pulse" />

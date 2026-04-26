@@ -186,20 +186,20 @@ export function ChatModal() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          style={{ backgroundColor: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)' }}
+          className="fixed inset-0 z-50"
+          style={{ backgroundColor: 'var(--overlay-bg)' }}
           onClick={() => store.closeChat()}
         >
           <motion.div
-            initial={{ scale: 0.9, opacity: 0, y: 20 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            transition={{ type: 'spring', bounce: 0.15, duration: 0.5 }}
-            className="relative w-full max-w-lg glass-card rounded-2xl border border-border-default overflow-hidden flex flex-col max-h-[80vh] shadow-2xl"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
+            className="absolute right-0 top-0 bottom-0 w-full max-w-md glass-card border-l border-border-default overflow-hidden flex flex-col shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-5 py-4 border-b border-border-default bg-white/[0.02]">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-border-default bg-subtle-faint">
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 rounded-lg bg-solana-purple/10 flex items-center justify-center">
                   <SkillIcon className="w-4.5 h-4.5 text-solana-purple" />
@@ -214,7 +214,7 @@ export function ChatModal() {
               </div>
               <button
                 onClick={() => store.closeChat()}
-                className="w-8 h-8 rounded-lg hover:bg-white/5 flex items-center justify-center text-text-muted hover:text-text-primary transition-colors cursor-pointer"
+                className="w-8 h-8 rounded-lg hover:bg-subtle flex items-center justify-center text-text-muted hover:text-text-primary transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -239,7 +239,7 @@ export function ChatModal() {
             </div>
 
             {/* Input */}
-            <div className="px-4 py-3 border-t border-border-default bg-white/[0.02]">
+            <div className="px-4 py-3 border-t border-border-default bg-subtle-faint">
               <div className="flex items-end gap-2">
                 <textarea
                   value={input}
@@ -247,7 +247,7 @@ export function ChatModal() {
                   onKeyDown={handleKeyDown}
                   placeholder={placeholder}
                   rows={1}
-                  className="flex-1 bg-white/5 border border-border-default rounded-xl px-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted/50 resize-none focus:outline-none focus:border-solana-purple/40 transition-colors min-h-[40px] max-h-[120px]"
+                  className="flex-1 bg-subtle border border-border-default rounded-xl px-3.5 py-2.5 text-sm text-text-primary placeholder:text-text-muted/50 resize-none focus:outline-none focus:border-solana-purple/40 transition-colors min-h-[40px] max-h-[120px]"
                   disabled={isProcessing}
                 />
                 <button
@@ -308,7 +308,7 @@ function MessageBubble({
         animate={{ opacity: 1 }}
         className="flex justify-center"
       >
-        <span className="text-[10px] px-3 py-1 rounded-full bg-white/5 text-text-muted border border-white/5">
+        <span className="text-[10px] px-3 py-1 rounded-full bg-subtle text-text-muted border border-subtle-faint">
           {msg.content}
         </span>
       </motion.div>
@@ -336,7 +336,7 @@ function MessageBubble({
         className={`max-w-[80%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${
           isUser
             ? 'bg-solana-blue/10 text-text-primary rounded-tr-sm'
-            : 'bg-white/5 text-text-secondary rounded-tl-sm border border-white/5'
+            : 'bg-subtle text-text-secondary rounded-tl-sm border border-subtle-faint'
         }`}
       >
         {displayContent}

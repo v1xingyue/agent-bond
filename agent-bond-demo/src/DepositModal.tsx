@@ -62,7 +62,7 @@ export function DepositModal({ open, onClose, onSuccess }: { open: boolean; onCl
       className="fixed inset-0 flex items-start justify-center"
       style={{
         zIndex: 100,
-        backgroundColor: 'rgba(0,0,0,0.7)',
+        backgroundColor: 'var(--overlay-bg)',
         backdropFilter: 'blur(10px)',
         WebkitBackdropFilter: 'blur(10px)',
         paddingTop: '100px',
@@ -78,7 +78,7 @@ export function DepositModal({ open, onClose, onSuccess }: { open: boolean; onCl
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 w-8 h-8 rounded-lg hover:bg-white/5 flex items-center justify-center text-text-muted hover:text-text-primary transition-colors cursor-pointer"
+          className="absolute top-4 right-4 w-8 h-8 rounded-lg hover:bg-subtle flex items-center justify-center text-text-muted hover:text-text-primary transition-colors cursor-pointer"
         >
           <X className="w-4 h-4" />
         </button>
@@ -96,7 +96,7 @@ export function DepositModal({ open, onClose, onSuccess }: { open: boolean; onCl
         {/* 未连接钱包 */}
         {!connected && (
           <div className="text-center py-6">
-            <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mx-auto mb-4">
+            <div className="w-12 h-12 rounded-xl bg-subtle flex items-center justify-center mx-auto mb-4">
               <Wallet className="w-6 h-6 text-text-muted" />
             </div>
             <div className="text-sm text-text-secondary mb-4">
@@ -228,7 +228,7 @@ export function DepositModal({ open, onClose, onSuccess }: { open: boolean; onCl
             <div className="text-xs text-status-error mb-4">{errorMsg}</div>
             <button
               onClick={() => setStep('input')}
-              className="px-4 py-2 rounded-lg text-xs text-text-primary bg-white/5 border border-border-default hover:bg-white/10 transition-colors cursor-pointer"
+              className="px-4 py-2 rounded-lg text-xs text-text-primary bg-subtle border border-border-default hover:bg-subtle-strong transition-colors cursor-pointer"
             >
               重试
             </button>

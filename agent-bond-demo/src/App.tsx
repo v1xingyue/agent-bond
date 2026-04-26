@@ -287,7 +287,7 @@ function DemoContent() {
                     onClick={() => setActiveTab(tab)}
                     className={`flex-1 py-2.5 rounded-xl text-sm font-medium transition-all cursor-pointer ${
                       activeTab === tab
-                        ? 'bg-white/10 text-text-primary'
+                        ? 'bg-subtle-strong text-text-primary'
                         : 'text-text-muted hover:text-text-secondary'
                     }`}
                   >
@@ -401,7 +401,7 @@ function BondPanel({ bond, balance, onChainBalance, level, progress, agentColor,
           <span>Lv.{level}</span>
           <span>{progress.next === 300 ? 'MAX' : `Lv.${level + 1}`}</span>
         </div>
-        <div className="h-3 bg-white/5 rounded-full overflow-hidden">
+        <div className="h-3 bg-subtle rounded-full overflow-hidden">
           <motion.div
             className="h-full rounded-full"
             style={{ background: `linear-gradient(90deg, ${agentColor}, #14F195)` }}
@@ -416,11 +416,11 @@ function BondPanel({ bond, balance, onChainBalance, level, progress, agentColor,
       </div>
 
       <div className="grid grid-cols-2 gap-3 mt-6">
-        <div className="bg-white/[0.03] rounded-xl p-3">
+        <div className="bg-subtle-faint rounded-xl p-3">
           <div className="text-xs text-text-muted mb-1">总支付</div>
           <div className="text-sm font-mono text-text-primary">{totalPay.toFixed(3)} SOL</div>
         </div>
-        <div className="bg-white/[0.03] rounded-xl p-3">
+        <div className="bg-subtle-faint rounded-xl p-3">
           <div className="text-xs text-text-muted mb-1">调用次数</div>
           <div className="text-sm font-mono text-text-primary">{txs.filter(t => t.type === 'payment').length} 次</div>
         </div>
@@ -462,7 +462,7 @@ function TransactionMiniList() {
             key={tx.id}
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex items-center justify-between p-2.5 rounded-lg bg-white/[0.02] text-xs"
+            className="flex items-center justify-between p-2.5 rounded-lg bg-subtle-faint text-xs"
           >
             <div className="min-w-0 flex-1">
               <div className="text-text-secondary truncate">{tx.skillName}</div>
@@ -533,8 +533,8 @@ function SkillsPanel({ balance }: { balance: number }) {
             disabled={!unlocked || !canAfford}
             className={`relative p-4 rounded-xl text-left transition-all disabled:cursor-not-allowed group overflow-hidden ${
               unlocked && canAfford
-                ? 'bg-white/[0.02] border border-border-default hover:border-border-hover cursor-pointer'
-                : 'bg-white/[0.01] border border-border-default/40 opacity-50'
+                ? 'bg-subtle-faint border border-border-default hover:border-border-hover cursor-pointer'
+                : 'bg-subtle-faint border border-border-default/40 opacity-50'
             } ${isFlashing ? 'ring-2 ring-solana-green/60' : ''}`}
           >
             {isFlashing && (
@@ -549,7 +549,7 @@ function SkillsPanel({ balance }: { balance: number }) {
             <div className="relative z-10">
               <div className="flex items-start justify-between mb-3">
                 <div className={`w-9 h-9 rounded-lg flex items-center justify-center border ${
-                  unlocked && canAfford ? getCategoryColor(skill.category) : 'text-text-muted bg-white/5 border-white/5'
+                  unlocked && canAfford ? getCategoryColor(skill.category) : 'text-text-muted bg-subtle border-subtle-faint'
                 }`}>
                   {!unlocked ? (
                     <Lock className="w-4 h-4 text-text-muted" />
@@ -566,7 +566,7 @@ function SkillsPanel({ balance }: { balance: number }) {
                       <div className="text-xs text-solana-green">+{skill.bondGain} 羁绊</div>
                     </>
                   ) : !unlocked ? (
-                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 text-text-muted border border-white/5">
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-subtle text-text-muted border border-subtle-faint">
                       Lv.{skill.minPermissionLevel} 解锁
                     </span>
                   ) : (
@@ -625,12 +625,12 @@ function PermissionsPanel({ bond }: { bond: number }) {
               unlocked
                 ? 'bg-solana-green/5 border-solana-green/20'
                 : isNext
-                ? 'bg-white/[0.02] border-bond-orange/20'
-                : 'bg-white/[0.02] border-border-default opacity-50'
+                ? 'bg-subtle-faint border-bond-orange/20'
+                : 'bg-subtle-faint border-border-default opacity-50'
             }`}
           >
             <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${
-              unlocked ? 'bg-solana-green/10 text-solana-green' : 'bg-white/5 text-text-muted'
+              unlocked ? 'bg-solana-green/10 text-solana-green' : 'bg-subtle text-text-muted'
             }`}>
               {unlocked ? <Unlock className="w-5 h-5" /> : <Lock className="w-5 h-5" />}
             </div>
@@ -691,7 +691,7 @@ function ChainDataPanel({ userState, agentBond, chainTxs, loading }: {
       <div className="space-y-3 overflow-y-auto scrollbar-hide flex-1">
         {/* UserState */}
         {userState && (
-          <div className="p-3 rounded-lg bg-white/[0.02] border border-border-default">
+          <div className="p-3 rounded-lg bg-subtle-faint border border-border-default">
             <div className="text-[10px] text-solana-blue font-medium mb-2 uppercase tracking-wider">UserState PDA</div>
             <div className="grid grid-cols-2 gap-2 text-xs">
               <div>
@@ -716,7 +716,7 @@ function ChainDataPanel({ userState, agentBond, chainTxs, loading }: {
 
         {/* AgentBond */}
         {agentBond && (
-          <div className="p-3 rounded-lg bg-white/[0.02] border border-border-default">
+          <div className="p-3 rounded-lg bg-subtle-faint border border-border-default">
             <div className="text-[10px] text-solana-purple font-medium mb-2 uppercase tracking-wider">AgentBond PDA ({agentBond.agentId})</div>
             <div className="grid grid-cols-2 gap-2 text-xs">
               <div>
@@ -745,7 +745,7 @@ function ChainDataPanel({ userState, agentBond, chainTxs, loading }: {
             <div className="text-[10px] text-text-muted font-medium mb-2 uppercase tracking-wider">最近链上交易</div>
             <div className="space-y-1.5">
               {chainTxs.slice(0, 5).map((tx, i) => (
-                <div key={i} className="flex items-center justify-between p-2 rounded bg-white/[0.02] text-[10px]">
+                <div key={i} className="flex items-center justify-between p-2 rounded bg-subtle-faint text-[10px]">
                   <div className="min-w-0 flex-1">
                     <a
                       href={`https://explorer.solana.com/tx/${tx.signature}?cluster=devnet`}
@@ -781,7 +781,7 @@ function UnlockOverlay({ level }: { level: number }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-[60] flex items-center justify-center"
-      style={{ backgroundColor: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)' }}
+      style={{ backgroundColor: 'var(--overlay-bg)', backdropFilter: 'blur(8px)' }}
       onClick={() => useBondStore.getState().dismissUnlockAnimation()}
     >
       <motion.div
