@@ -4,7 +4,7 @@ import { Connection, PublicKey, Transaction, SystemProgram, LAMPORTS_PER_SOL } f
 interface SolanaWindow extends Window {
   solana?: {
     isPhantom?: boolean;
-    connect: () => Promise<{ publicKey: { toString: () => string } }>;
+    connect: (opts?: { onlyIfTrusted: boolean }) => Promise<{ publicKey: { toString: () => string } }>;
     disconnect: () => Promise<void>;
     on: (event: string, callback: () => void) => void;
     removeListener: (event: string, callback: () => void) => void;
@@ -18,7 +18,7 @@ const RPC_URL = 'https://api.devnet.solana.com';
 
 export interface PhantomProvider {
   isPhantom?: boolean;
-  connect: () => Promise<{ publicKey: { toString: () => string } }>;
+  connect: (opts?: { onlyIfTrusted: boolean }) => Promise<{ publicKey: { toString: () => string } }>;
   disconnect: () => Promise<void>;
   on: (event: string, callback: () => void) => void;
   removeListener: (event: string, callback: () => void) => void;
@@ -53,9 +53,21 @@ export function WalletProvider({ children }: { children: ReactNode }) {
     return new Connection(RPC_URL, 'confirmed');
   }, []);
 
+  // Auto-connect on mount if previously trusted
   useEffect(() => {
     const provider = getProvider();
     if (!provider) return;
+
+    const autoConnect = async () => {
+      try {
+        const resp = await provider.connect({ onlyIfTrusted: true });
+        setPublicKey(resp.publicKey.toString());
+        setConnected(true);
+      } catch {
+        // Silently fail — user hasn't trusted this dApp yet
+      }
+    };
+    autoConnect();
 
     const handleConnect = () => {
       // 由 connect() 方法处理状态更新
