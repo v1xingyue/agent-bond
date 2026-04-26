@@ -44,24 +44,32 @@
   --border-hover: rgba(255, 255, 255, 0.15);
 
   --overlay-bg: rgba(0, 0, 0, 0.6);
+
+  --grid-line: rgba(153, 69, 255, 0.06);
+  --grid-glow-1: rgba(153, 69, 255, 0.10);
+  --grid-glow-2: rgba(20, 241, 149, 0.05);
 }
 
 /* ─── Light mode ──────────────────────────────────────────── */
 @media (prefers-color-scheme: light) {
   :root {
-    --bg-primary: #F8F9FB;
+    --bg-primary: #EEF1F6;
     --bg-secondary: #FFFFFF;
-    --bg-card: rgba(255, 255, 255, 0.8);
-    --bg-glass: rgba(0, 0, 0, 0.02);
+    --bg-card: #FFFFFF;
+    --bg-glass: rgba(0, 0, 0, 0.04);
 
     --text-primary: #0F172A;
     --text-secondary: #475569;
     --text-muted: #94A3B8;
 
-    --border-default: rgba(0, 0, 0, 0.08);
-    --border-hover: rgba(0, 0, 0, 0.15);
+    --border-default: rgba(0, 0, 0, 0.12);
+    --border-hover: rgba(0, 0, 0, 0.25);
 
-    --overlay-bg: rgba(0, 0, 0, 0.3);
+    --overlay-bg: rgba(15, 23, 42, 0.35);
+
+    --grid-line: rgba(153, 69, 255, 0.15);
+    --grid-glow-1: rgba(153, 69, 255, 0.12);
+    --grid-glow-2: rgba(20, 241, 149, 0.08);
   }
 }
 
@@ -94,9 +102,19 @@
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--border-default);
   }
+  @media (prefers-color-scheme: light) {
+    .glass-card {
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+    }
+  }
   .glass-card-hover:hover {
     border-color: var(--border-hover);
     background: var(--bg-secondary);
+  }
+  @media (prefers-color-scheme: light) {
+    .glass-card-hover:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
   }
   .gradient-text {
     background: linear-gradient(135deg, #9945FF 0%, #14F195 100%);
@@ -156,6 +174,16 @@
     .border-subtle-faint {
       border-color: rgba(0, 0, 0, 0.05);
     }
+  }
+  .grid-bg {
+    background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .bg-glow-1 {
+    background: var(--grid-glow-1);
+  }
+  .bg-glow-2 {
+    background: var(--grid-glow-2);
   }
   .animate-pulse-slow {
     animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;

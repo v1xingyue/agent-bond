@@ -68,12 +68,9 @@ function SectionTitle({ title, subtitle }: { title: string; subtitle: string }) 
 function GridBackground() {
   return (
     <div className="fixed inset-0 z-0 pointer-events-none">
-      <div className="absolute inset-0" style={{
-        backgroundImage: `linear-gradient(rgba(153,69,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(153,69,255,0.03) 1px, transparent 1px)`,
-        backgroundSize: '60px 60px'
-      }} />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-solana-purple/10 rounded-full blur-[150px]" />
-      <div className="absolute bottom-0 right-0 w-[600px] h-[400px] bg-solana-green/5 rounded-full blur-[150px]" />
+      <div className="absolute inset-0 grid-bg" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full blur-[150px] bg-glow-1" />
+      <div className="absolute bottom-0 right-0 w-[600px] h-[400px] rounded-full blur-[150px] bg-glow-2" />
     </div>
   );
 }
